@@ -1,0 +1,27 @@
+<h2>Step 1</h2>
+<form [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" (click)="isClicked(username)" [ngClass]="{error: isAnError(username)}"
+        formControlName="username" required>
+      <div class="form-control-feedback" *ngIf="isAnError(username)">
+        <p>Username is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" (click)="isClicked(password)" [ngClass]="{error: isAnError(password)}"
+        formControlName="password" required>
+      <div class="form-control-feedback" *ngIf="isAnError(password)">
+        <p *ngIf="password.errors.required ">Password is required</p>
+        <p *ngIf="password.errors.minlength">Password must be at least 6 characters long</p>
+        <p *ngIf="password.errors.maxlength">Password must be at most 8 characters long</p>
+      </div>
+    </div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button type="submit" class="btn" (click)="isSubmited=true">Submit</button>
+  </form>
