@@ -1,0 +1,54 @@
+<div class="card-container">
+  <form [formGroup]="addForm" (ngOnSubmit)="onSubmit()">
+    <div class="btn-container">
+      <button (click)="openCard=true">Add Credit Card</button>
+      <div class="card-content" *ngIf="openCard">
+        <div class="input">
+          <label>Card Number</label>
+          <input type="number" formControlName="cardNumber" required>
+          <div class="error"
+            *ngIf="(addform.get('cardNumber').hasError() && (addform.get('cardNumber').dirty || addform.get('cardNumber').touched)) && isSubmited">
+            <p>error</p>
+          </div>
+        </div>
+        <div class="input">
+          <label>Card Owner</label>
+          <input type="text" formControlName="owner" required>
+        </div>
+        <div class="input">
+          <label>Cvv Number</label>
+          <input type="number" formControlName="cvv" required>
+        </div>
+        <div class="input">
+          <label>Expiration Date</label>
+          <input type="number" formControlName="expiration" required>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container" >
+      <button (click)="openBilling=true">Add Billing Address</button>
+      <div class="card-content" *ngIf="openBilling">
+        <div class="input">
+          <label>City</label>
+          <input type="text" formControlName="city" required>
+        </div>
+        <div class="input">
+          <label>Street</label>
+          <input type="text" formControlName="street" required>
+        </div>
+        <div class="input">
+          <label>Apartment</label>
+          <input type="text" formControlName="apartment" required>
+        </div>
+        <div class="input">
+          <label>Phone Number</label>
+          <input type="number" formControlName="phoneNumber" required>
+        </div>
+      </div>
+    </div>
+    <div class="nav-btn">
+      <button (click)="goBack()">Back</button>
+      <button type="submit" (click)="isSubmited=true">Next</button>
+    </div>
+  </form>
+</div>

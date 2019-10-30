@@ -1,0 +1,19 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+
+}
+.btn-container{
+    margin: 20px;
+}
+.nav-btn{
+    display: flex;
+    justify-content: space-between
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}

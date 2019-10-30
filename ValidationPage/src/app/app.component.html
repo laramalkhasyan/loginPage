@@ -1,2 +1,3 @@
-<router-outlet></router-outlet>
-<app-register></app-register>
+<app-register *ngIf="registerActive" (rIsActive)="displayRegister($event)"></app-register>
+<app-add-card *ngIf="addCardActive" (cIsActive) = "displayAddCard($event)"></app-add-card>
+<app-subscribe *ngIf="subscribeActive" (cIsActive) = "displaySubscribe($event)"></app-subscribe>

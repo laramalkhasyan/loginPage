@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ValidationPage';
+  registerActive = false
+  addCardActive = false
+  subscribeActive=true
+  displayRegister(active){
+    this.registerActive=active
+    this.addCardActive=!active
+  }
+  displayAddCard(active){
+    this.addCardActive=active
+    this.registerActive=!active
+  }
+  displaySubscribe(active){
+    this.subscribeActive=active
+    this.addCardActive=!active
+  }
 }
