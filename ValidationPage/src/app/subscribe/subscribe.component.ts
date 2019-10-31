@@ -10,7 +10,7 @@ export class SubscribeComponent implements OnInit {
   subscribe = this.fb.group({
     email:['',Validators.required]
   })
-  isChecked=document.getElementById("subscribe")
+  isChecked=false
   constructor(private fb:FormBuilder) { }
 
   ngOnInit() {

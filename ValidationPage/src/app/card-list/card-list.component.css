@@ -28,3 +28,6 @@ p{
 .smin{
     width: 50px;
 }
+form{
+    border-bottom: 1px solid grey;
+}

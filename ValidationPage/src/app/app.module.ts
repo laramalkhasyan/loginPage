@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddCardComponent } from './add-card/add-card.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ResultsComponent } from './results/results.component';
+import { CardNumberDirective } from './card-number.directive';
+import { CardListComponent } from './card-list/card-list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ResultsComponent } from './results/results.component';
     RegisterComponent,
     AddCardComponent,
     SubscribeComponent,
-    ResultsComponent
+    ResultsComponent,
+    CardNumberDirective,
+    CardListComponent
   ],
   imports: [
     BrowserModule,

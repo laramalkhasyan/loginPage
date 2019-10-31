@@ -1,0 +1,36 @@
+<form [formGroup]="addForm" (ngOnSubmit)="onSubmit()" >
+  <div class="card-content">
+    <div class="input">
+      <label>Card Number</label>
+      <input appCard type="text" formControlName="cardNumber" value="cardNumber" maxlength="19" required>
+      <div class="error" *ngIf="addForm.controls.cardNumber.errors && isSubmited">
+        <p>Card number is required</p>
+      </div>
+    </div>
+    <div class="input">
+      <label>Card Owner</label>
+      <input type="text" formControlName="owner" required>
+      <div *ngIf="addForm.controls.owner.errors && isSubmited">
+        <p  *ngIf="addForm.controls.owner.errors.required">Card owner is required</p>
+        <p *ngIf="addForm.controls.owner.errors.pattern">Name should start with Mr or Mrs</p>
+      </div>
+    </div>
+    {{isSubmited}}
+    <div class="small">
+      <div class="input">
+        <label>CVV</label>
+        <input class="smin" type="text" formControlName="cvv" maxlength="3" required>
+        <div *ngIf="addForm.controls.cvv.errors && isSubmited">
+          <p>CVV number is required</p>
+        </div>
+      </div>
+      <div class="input">
+        <label>Expiration Date</label>
+        <input class="smin" type="number" formControlName="expiration" maxlength="5" required>
+        <div *ngIf="addForm.controls.expiration.errors && isSubmited">
+          <p>Expiration date is required</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -7,11 +7,7 @@ import { Validators ,FormBuilder} from '@angular/forms';
   styleUrls: ['./add-card.component.css']
 })
 export class AddCardComponent implements OnInit {
-  addForm= this.fb.group({    
-      cardNumber:['',Validators.required],
-      owner:['',Validators.required],
-      cvv:['',Validators.required],
-      expiration:['',Validators.required], 
+  addForm= this.fb.group({   
       city:['',Validators.required],
       street:['',Validators.required],
       apartment:['',Validators.required],
@@ -22,6 +18,7 @@ export class AddCardComponent implements OnInit {
   @Output() cIsActive = new EventEmitter()
   active = true
   isSubmited= false
+  cardList = []
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -29,5 +26,17 @@ export class AddCardComponent implements OnInit {
   goBack(){
     this.cIsActive.emit(this.active=false)
   }
+  addCard(){
+    this.cardList.push("1")
+  }
  
+  onSubmit(){           
+      if (this.addForm.valid) {
+        this.active = false
+        console.log("Form Submitted!");
+        this.isSubmited = false;
+        this.cIsActive.emit(this.active)
+      }
+  }
 }
+

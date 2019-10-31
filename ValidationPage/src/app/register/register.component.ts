@@ -1,5 +1,6 @@
 import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 import { Validators ,FormBuilder} from '@angular/forms';
+import { MustMatch } from 'src/app/mustMatch.validator'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,9 +9,11 @@ import { Validators ,FormBuilder} from '@angular/forms';
 export class RegisterComponent implements OnInit {
   myform = this.fb.group({
     username: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     password: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(32)] ],
     confirm:['', Validators.required]
+  }, {
+    validator: MustMatch.MatchPassword
   })
   isSubmited = false
   @Output() rIsActive = new EventEmitter()

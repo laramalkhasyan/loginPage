@@ -1,5 +1,17 @@
-<form [formGroup]="subscribe">
-  <input id="subscribe" type="radio" name="radio-name" formControlName="email">Subscribe<br>
-  <input *ngIf="isChecked" type="email">
-  <input type="radio" name="radio-name">Later
+<form [formGroup]="subscribe" (ngSubmit)="onSubmit()">
+  <div>
+      <input id="subscribe" type="radio" name="radio-name" formControlName="email" (click)="isChecked=true">Subscribe<br>
+  </div> 
+  <div class="sub-email" *ngIf="isChecked">
+    <label>Please enter your email</label>
+    <input  type="email"><br>
+  </div>  
+  <div>
+      <input type="radio" name="radio-name" (click)="isChecked=false">Later
+  </div>
+  <div class="buttons">
+    <button>Back</button>
+    <button type="submit">Submit</button> 
+  </div> 
+  
 </form>
