@@ -16,7 +16,7 @@ export class AppComponent {
   }
   displayAddCard(active){
     this.addCardActive=active
-    this.registerActive=!active
+    this.subscribeActive=!active
   }
   displaySubscribe(active){
     this.subscribeActive=active
