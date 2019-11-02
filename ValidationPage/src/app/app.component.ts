@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ValidationPage';
   registerActive = false
-  addCardActive = true
-  subscribeActive=false
+  addCardActive = false
+  subscribeActive=true
+  resultsActive=false
   displayRegister(active){
     this.registerActive=active
     this.addCardActive=!active
@@ -20,6 +21,6 @@ export class AppComponent {
   }
   displaySubscribe(active){
     this.subscribeActive=active
-    this.addCardActive=!active
+    this.resultsActive=!active
   }
 }

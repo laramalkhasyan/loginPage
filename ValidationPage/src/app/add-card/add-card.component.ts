@@ -19,7 +19,7 @@ export class AddCardComponent implements OnInit {
   active = true
   isSubmited= false
   cardList = []
-  isValid
+  isValided 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -33,13 +33,12 @@ export class AddCardComponent implements OnInit {
     }
     
   } 
-  childIsValid(input){
-    this.isValid=input
+  childIsValid(val){
+    this.isValided=val
   }
   onSubmit(){   
-    this.getFormValidationErrors();        
-      if (this.addForm.valid && this.isValid) {
-        debugger
+    this.getFormValidationErrors();      
+      if (this.addForm.valid && this.isValided) {
         this.active = false
         console.log("Form Submitted!");
         this.isSubmited = false;

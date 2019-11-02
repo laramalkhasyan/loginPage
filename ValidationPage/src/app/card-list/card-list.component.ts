@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, Output,EventEmitter, ɵConsole} from '@angular/core';
+import { Component, OnInit,Input, Output,EventEmitter} from '@angular/core';
 import { map,tap, distinctUntilChanged } from 'rxjs/operators';
 
 import { Validators ,FormBuilder} from '@angular/forms';
@@ -16,7 +16,7 @@ export class CardListComponent implements OnInit {
     expiration:['',Validators.required],
   })
   @Input() isSubmited :boolean
-  @Output() isValid = new EventEmitter(this.addForm.valid)
+  @Output() isValid = new EventEmitter()
   get cardInput() {
    return this.addForm.get("cardNumber")
   }
@@ -24,7 +24,10 @@ export class CardListComponent implements OnInit {
     return this.addForm.get("expiration")
    }
   constructor(private fb: FormBuilder) { }
-
+  myCard
+  myOwner
+  myCvv
+  myEx
   ngOnInit() {
     this.cardInput.valueChanges.pipe(
       distinctUntilChanged(),
@@ -44,12 +47,8 @@ export class CardListComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.addForm.valid){
-      this.isValid.emit(true)
-    }
-    else{
-      this.isValid.emit(false)
-    }
+    let val = this.addForm.valid
+    this.isValid.emit(val)
   }
   private formatCardNumber(value: string): string {
     return value

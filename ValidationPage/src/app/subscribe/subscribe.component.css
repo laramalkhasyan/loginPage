@@ -1,22 +1,30 @@
-form{
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
     text-align: start;
 }
-.sub-email{
+
+.sub-email {
     display: flex;
     flex-direction: column;
     margin-left: 178px;
 }
-div{
+
+div {
     margin: 20px 0px;
 }
-.buttons{
+
+.buttons {
     display: flex;
     justify-content: space-between;
 }
-button{
+
+button {
     margin: 10px;
+}
+
+p {
+    color: red;
 }
