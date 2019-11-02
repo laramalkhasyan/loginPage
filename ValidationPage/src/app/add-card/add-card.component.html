@@ -3,13 +3,13 @@
         <div class="btn-container">
             <button (click)="addCard()">Add Credit Card</button>
             <div>
-                <app-card-list *ngFor="let item of cardList" [isSubmited]="isSubmited" (isValid)="childIsValid($event)"></app-card-list>
+                <app-card-list *ngFor="let item of cardList" [isSubmited]="isSubmited" (isValid)="childIsValid($event)" (outputCardForm)="getCardForm($event)"></app-card-list>
             </div>
         </div>
+        {{addForm.value | json}}
         <div class="btn-container">
             <button (click)="addBilling=true">Add Billing Address</button>
             <div class="card-content" *ngIf="addBilling">
-                {{isValided}}
                 <div class="input">
                     <label>City</label>
                     <input type="text" formControlName="city">

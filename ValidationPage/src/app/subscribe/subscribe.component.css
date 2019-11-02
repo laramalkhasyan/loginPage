@@ -4,6 +4,8 @@ form {
     align-items: center;
     margin-top: 50px;
     text-align: start;
+    font-family: sans-serif;
+    font-size: 20px;
 }
 
 .sub-email {
@@ -27,4 +29,19 @@ button {
 
 p {
     color: red;
+}
+
+button {
+    background-color: #7575a3;
+    border-style: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 20px;
+}
+
+input {
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 10px;
 }

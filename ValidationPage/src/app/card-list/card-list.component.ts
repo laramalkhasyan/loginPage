@@ -17,6 +17,7 @@ export class CardListComponent implements OnInit {
   })
   @Input() isSubmited :boolean
   @Output() isValid = new EventEmitter()
+  @Output() outputCardForm = new EventEmitter()
   get cardInput() {
    return this.addForm.get("cardNumber")
   }
@@ -24,11 +25,9 @@ export class CardListComponent implements OnInit {
     return this.addForm.get("expiration")
    }
   constructor(private fb: FormBuilder) { }
-  myCard
-  myOwner
-  myCvv
-  myEx
+
   ngOnInit() {
+    this.outputCardForm.emit(this.addForm)
     this.cardInput.valueChanges.pipe(
       distinctUntilChanged(),
       map(value => this.formatCardNumber(value)),
@@ -46,9 +45,9 @@ export class CardListComponent implements OnInit {
     
   }
 
-  onSubmit(){
-    let val = this.addForm.valid
-    this.isValid.emit(val)
+  onSubmit(){    
+    
+    this.isValid.emit(this.addForm.valid)
   }
   private formatCardNumber(value: string): string {
     return value

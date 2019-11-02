@@ -14,13 +14,17 @@ export class SubscribeComponent implements OnInit {
   active=true
   isSubmited  =false
   @Output() sIsActive = new EventEmitter()
+  @Output() outputSubscribeForm = new EventEmitter()
   constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
     this.changeValidation()
   }
   onSubmit(){
-    this.sIsActive.emit(this.active=false)  
+    if(this.subscribe.valid){
+      this.sIsActive.emit(this.active=false)  
+      this.outputSubscribeForm.emit(this.subscribe)
+    }    
   }
 
   goBack(){
