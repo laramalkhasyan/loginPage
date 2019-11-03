@@ -11,7 +11,7 @@ import { Validators ,FormBuilder} from '@angular/forms';
 export class CardListComponent implements OnInit {
   addForm= this.fb.group({
     cardNumber:['',[Validators.required,Validators.minLength(19)]],
-    owner:['',[Validators.required,Validators.pattern('^(Mr|Mrs|Ms)')]],
+    owner:['',[Validators.required,Validators.pattern('^(Mr|Mrs|Ms) ([a-zA-Z]+\s[a-zA-Z]+)')]],
     cvv:['',[Validators.required,Validators.maxLength(3)]],
     expiration:['',Validators.required],
   })
