@@ -9,9 +9,9 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 export class AppComponent {
   allForm: FormGroup;
   title = 'ValidationPage';
-  registerActive = false
+  registerActive = true
   addCardActive = false
-  subscribeActive=true
+  subscribeActive=false
   resultsActive=false
   
   constructor(private fb: FormBuilder) {}

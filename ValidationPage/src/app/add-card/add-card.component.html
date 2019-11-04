@@ -3,7 +3,7 @@
         <div class="btn-container">
             <button (click)="addCard()">Add Credit Card</button>
             <div>
-                <app-card-list *ngFor="let item of cardList" [isSubmited]="isSubmited" (isValid)="childIsValid($event)" (outputCardForm)="getCardForm($event)"></app-card-list>
+                <app-card-list *ngFor="let item of cardList" [isSubmited]="isSubmited" [allForm]="allForm" (isValid)="childIsValid($event)" (outputCardForm)="getCardForm($event)"></app-card-list>
             </div>
         </div>
         <div class="btn-container">

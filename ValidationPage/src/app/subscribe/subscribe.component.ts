@@ -12,8 +12,10 @@ export class SubscribeComponent implements OnInit {
     email:['',[Validators.required,Validators.email]],
   })
   active=true
+  backActive=false
   isSubmited  =false
   @Output() sIsActive = new EventEmitter()
+  @Output() backIsActive = new EventEmitter()
   @Output() outputSubscribeForm = new EventEmitter()
   constructor(private fb:FormBuilder) { }
 
@@ -28,7 +30,8 @@ export class SubscribeComponent implements OnInit {
   }
 
   goBack(){
-    this.sIsActive.emit(this.active=false)
+    debugger
+    this.backIsActive.emit(this.backActive=true)
   }
   changeValidation(){
     const emailControl = this.subscribe.get('email')

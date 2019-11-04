@@ -1,4 +1,4 @@
-<app-register *ngIf="registerActive" (rIsActive)="displayRegister($event)" (outputForm)="getForm('register',$event)"></app-register>
-<app-add-card *ngIf="addCardActive" (cIsActive)="displayAddCard($event)" (outputCardForm)="getForm('card',$event)"></app-add-card>
-<app-subscribe *ngIf="subscribeActive" (sIsActive)="displaySubscribe($event)" (outputSubscribeForm)="getForm('subscribe',$event)"></app-subscribe>
+<app-register *ngIf="registerActive" (rIsActive)="displayRegister($event)" [allForm]="allForm" (outputForm)="getForm('register',$event)"></app-register>
+<app-add-card *ngIf="addCardActive" (cIsActive)="displayAddCard($event)" [allForm]="allForm" (backActive)="displayRegister($event)"  (outputCardForm)="getForm('card',$event)"></app-add-card>
+<app-subscribe *ngIf="subscribeActive" (sIsActive)="displaySubscribe($event)" (backIsActive)="displayAddCard($event)" (outputSubscribeForm)="getForm('subscribe',$event)"></app-subscribe>
 <app-results *ngIf="resultsActive" [allForm]="allForm"></app-results>

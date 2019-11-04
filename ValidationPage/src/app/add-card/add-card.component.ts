@@ -1,5 +1,5 @@
-import { Component, OnInit,EventEmitter, Output } from '@angular/core';
-import { Validators ,FormBuilder, ValidationErrors} from '@angular/forms';
+import { Component, OnInit,EventEmitter, Output, Input } from '@angular/core';
+import { Validators ,FormBuilder, ValidationErrors,FormGroup,AbstractControl,FormControl,FormArray} from '@angular/forms';
 
 @Component({
   selector: 'app-add-card',
@@ -15,8 +15,11 @@ export class AddCardComponent implements OnInit {
   })
   openCard=false
   addBilling = false
+  @Input() allForm: FormGroup
   @Output() cIsActive = new EventEmitter()
+  @Output() backActive = new EventEmitter()
   @Output() outputCardForm = new EventEmitter()
+  activeBack = false
   active = true
   isSubmited= false
   cardList = []
@@ -24,9 +27,30 @@ export class AddCardComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    const countControls = (control: AbstractControl): number => {
+      if (control instanceof FormControl) {
+        return 1;
+      }
+    
+      if (control instanceof FormArray) {
+        return control.controls.reduce((acc, curr) => acc + countControls(curr), 1)
+      }
+    
+      if (control instanceof FormGroup) {
+        return Object.keys(control.controls)
+          .map(key => control.controls[key])
+          .reduce((acc, curr) => acc + countControls(curr), 1);
+      }
+    }
+    if(countControls(this.allForm) > 7){
+      this.addForm.get("city").patchValue(this.allForm.value.card.city)
+      this.addForm.get("street").patchValue(this.allForm.value.card.street)
+      this.addForm.get("apartment").patchValue(this.allForm.value.card.apartment)
+      this.addForm.get("phoneNumber").patchValue(this.allForm.value.card.phoneNumber)
+    }
   }
   goBack(){
-    this.cIsActive.emit(this.active=false)
+    this.backActive.emit(this.activeBack=true)
   }
   addCard(){
     if(this.cardList.length<3){
@@ -37,8 +61,7 @@ export class AddCardComponent implements OnInit {
   childIsValid(val){
     this.isValided=val
   }
-  onSubmit(){   
-    this.getFormValidationErrors();      
+  onSubmit(){ 
       if (this.addForm.valid && this.isValided) {
         this.active = false
         console.log("Form Submitted!");
@@ -46,21 +69,10 @@ export class AddCardComponent implements OnInit {
         this.outputCardForm.emit(this.addForm)
         this.cIsActive.emit(this.active)
       }
-
-      console.log(this.addForm)
   }
   getCardForm(form){
     this.addForm.setControl("cardList",form)
   }
-  getFormValidationErrors() {
-    Object.keys(this.addForm.controls).forEach(key => {
-    const controlErrors: ValidationErrors = this.addForm.get(key).errors;
-    if (controlErrors != null) {
-          Object.keys(controlErrors).forEach(keyError => {
-            console.log("Key control: " + key + ", keyError: " + keyError + ", err value: ", controlErrors[keyError]);
-          });
-        }
-      });
-    }
+
 }
 
