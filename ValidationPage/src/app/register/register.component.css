@@ -1,41 +1,42 @@
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: sans-serif;
 }
 
 .form-group {
-  display: inherit;
-  flex-direction: column;
-  margin: 10px;
-  font-size: 20px;
+    display: inherit;
+    flex-direction: column;
+    margin: 10px;
+    font-size: 20px;
 }
 
 .btn {
-  flex-direction: flex-end;
+    flex-direction: flex-end;
 }
 
 .button {
-  display: flex;
+    display: flex;
 }
 
 button {
     background-color: #7575a3;
-    border: none;
+    border-style: none;
+    border-radius: 8px;
     padding: 10px 20px;
     color: white;
     font-size: 20px;
 }
 
 p {
-  color: red;
-  font-size: 15px;
+    color: red;
+    font-size: 15px;
 }
 
 input {
-  border-radius: 8px;
-  border: 1px solid grey;
-  padding: 10px;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 10px;
 }

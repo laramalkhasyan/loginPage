@@ -1,30 +1,51 @@
-.card-container{
+.card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+}
 
-}
-.btn-container{
+.btn-container {
     margin: 20px;
+    font-family: sans-serif;
+    font-size: 20px;
 }
-.nav-btn{
+
+.nav-btn {
     display: flex;
     justify-content: space-between
 }
 
-.input{
+.input {
     display: flex;
     flex-direction: column;
     margin: 10px;
 }
-p{
+
+p {
     color: red;
 }
-.small{
+
+.small {
     display: flex;
     flex-direction: row;
 }
-.smin{
+
+.smin {
     width: 50px;
+}
+
+button {
+    background-color: #7575a3;
+    border-style: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 20px;
+}
+
+input {
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 10px;
 }

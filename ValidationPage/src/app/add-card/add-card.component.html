@@ -1,51 +1,51 @@
 <div class="card-container">
-  <form [formGroup]="addForm" (ngSubmit)="onSubmit()" (isValid)="childIsValid($event)">
-    <div class="btn-container">
-      <button (click)="addCard()">Add Credit Card</button>
-      <div *ngFor="let item of cardList">
-        <app-card-list [isSubmited]="isSubmited"></app-card-list>
-      </div>
-    </div>
-    <div class="btn-container">
-      <button (click)="openBilling=true">Add Billing Address</button>
-      <div class="card-content" *ngIf="openBilling">
-        <div class="input">
-          <label>City</label>
-          <input type="text" formControlName="city" >
-          <div *ngIf="addForm.controls.city.errors && isSubmited">
-            <p *ngIf="addForm.controls.city.errors.required">City is required</p>
-          </div>
-          
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="btn-container">
+            <button (click)="addCard()">Add Credit Card</button>
+            <div>
+                <app-card-list *ngFor="let item of cardList" [isSubmited]="isSubmited" (isValid)="childIsValid($event)" (outputCardForm)="getCardForm($event)"></app-card-list>
+            </div>
         </div>
-        <div class="input">
-          <label>Street</label>
-          <input type="text" formControlName="street">
-          <div *ngIf="addForm.controls.street.errors && isSubmited">
-            <p *ngIf="addForm.controls.street.errors.required">Street is required</p>
+        <div class="btn-container">
+            <button (click)="addBilling=true">Add Billing Address</button>
+            <div class="card-content" *ngIf="addBilling">
+                <div class="input">
+                    <label>City</label>
+                    <input type="text" formControlName="city">
+                    <div *ngIf="addForm.controls.city.errors && isSubmited">
+                        <p *ngIf="addForm.controls.city.errors.required">City is required</p>
+                    </div>
 
-          </div>
-        </div>
-        <div class="input">
-          <label>Apartment</label>
-          <input type="text" formControlName="apartment" >
-          <div *ngIf="addForm.controls.apartment.errors && isSubmited">
-            <p *ngIf="addForm.controls.apartment.errors.required">Apartment is required</p>
+                </div>
+                <div class="input">
+                    <label>Street</label>
+                    <input type="text" formControlName="street">
+                    <div *ngIf="addForm.controls.street.errors && isSubmited">
+                        <p *ngIf="addForm.controls.street.errors.required">Street is required</p>
 
-          </div>
-        </div>
-        <div class="input">
-          <label>Phone Number</label>
-          <input type="number" formControlName="phoneNumber">
-          <div *ngIf="addForm.controls.phoneNumber.errors && isSubmited">
-            <p *ngIf="addForm.controls.phoneNumber.errors.required">Phone number is required</p>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Apartment</label>
+                    <input type="text" formControlName="apartment">
+                    <div *ngIf="addForm.controls.apartment.errors && isSubmited">
+                        <p *ngIf="addForm.controls.apartment.errors.required">Apartment is required</p>
 
-          </div>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Phone Number</label>
+                    <input type="number" formControlName="phoneNumber">
+                    <div *ngIf="addForm.controls.phoneNumber.errors && isSubmited">
+                        <p *ngIf="addForm.controls.phoneNumber.errors.required">Phone number is required</p>
+
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="nav-btn">
-      <button (click)="goBack()">Back</button>
-      <button type="submit" (click)="isSubmited=true">Next</button>
-    </div>
-  </form>
+        <div class="nav-btn">
+            <button (click)="goBack()">Back</button>
+            <button type="submit" (click)="isSubmited=true">Next</button>
+        </div>
+    </form>
 </div>

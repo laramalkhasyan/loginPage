@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, Output,EventEmitter, ɵConsole} from '@angular/core';
+import { Component, OnInit,Input, Output,EventEmitter} from '@angular/core';
 import { map,tap, distinctUntilChanged } from 'rxjs/operators';
 
 import { Validators ,FormBuilder} from '@angular/forms';
@@ -11,12 +11,13 @@ import { Validators ,FormBuilder} from '@angular/forms';
 export class CardListComponent implements OnInit {
   addForm= this.fb.group({
     cardNumber:['',[Validators.required,Validators.minLength(19)]],
-    owner:['',[Validators.required,Validators.pattern('^(Mr|Mrs|Ms)')]],
+    owner:['',[Validators.required,Validators.pattern('^(Mr|Mrs|Ms) ([a-zA-Z]+\s[a-zA-Z]+)')]],
     cvv:['',[Validators.required,Validators.maxLength(3)]],
     expiration:['',Validators.required],
   })
   @Input() isSubmited :boolean
-  @Output() isValid = new EventEmitter(this.addForm.valid)
+  @Output() isValid = new EventEmitter()
+  @Output() outputCardForm = new EventEmitter()
   get cardInput() {
    return this.addForm.get("cardNumber")
   }
@@ -26,6 +27,7 @@ export class CardListComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.outputCardForm.emit(this.addForm)
     this.cardInput.valueChanges.pipe(
       distinctUntilChanged(),
       map(value => this.formatCardNumber(value)),
@@ -41,13 +43,9 @@ export class CardListComponent implements OnInit {
     
   }
 
-  onSubmit(){
-    if(this.addForm.valid){
-      this.isValid.emit(true)
-    }
-    else{
-      this.isValid.emit(false)
-    }
+  onSubmit(){    
+    
+    this.isValid.emit(this.addForm.valid)
   }
   private formatCardNumber(value: string): string {
     return value

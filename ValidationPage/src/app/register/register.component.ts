@@ -1,5 +1,5 @@
 import { Component, OnInit,EventEmitter, Output } from '@angular/core';
-import { Validators ,FormBuilder} from '@angular/forms';
+import { Validators ,FormBuilder,FormGroup} from '@angular/forms';
 import { MustMatch } from 'src/app/mustMatch.validator'
 @Component({
   selector: 'app-register',
@@ -17,18 +17,14 @@ export class RegisterComponent implements OnInit {
   })
   isSubmited = false
   @Output() rIsActive = new EventEmitter()
+  @Output() outputForm = new EventEmitter<any>()
   active = true
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {
-    
+  ngOnInit() {          
+    this.outputForm.emit(this.myform)
   }
- 
-  isAnError(input){
-    console.log(input, "sdfvs")
-    if(this.isSubmited && input.errors)
-    return true
-  }
+  
   onSubmit(){
     if (this.myform.valid) {
       this.active = false

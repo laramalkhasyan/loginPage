@@ -16,11 +16,11 @@ export class AddCardComponent implements OnInit {
   openCard=false
   addBilling = false
   @Output() cIsActive = new EventEmitter()
+  @Output() outputCardForm = new EventEmitter()
   active = true
   isSubmited= false
   cardList = []
-  isValid
-  
+  isValided 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -34,22 +34,24 @@ export class AddCardComponent implements OnInit {
     }
     
   } 
-  childIsValid(input){
-    this.isValid=input
+  childIsValid(val){
+    this.isValided=val
   }
   onSubmit(){   
-    this.getFormValidationErrors();        
-      if (this.addForm.valid && this.isValid) {
-        debugger
+    this.getFormValidationErrors();      
+      if (this.addForm.valid && this.isValided) {
         this.active = false
         console.log("Form Submitted!");
-        this.isSubmited = false;
+        this.isSubmited = false;        
+        this.outputCardForm.emit(this.addForm)
         this.cIsActive.emit(this.active)
       }
 
       console.log(this.addForm)
   }
-
+  getCardForm(form){
+    this.addForm.setControl("cardList",form)
+  }
   getFormValidationErrors() {
     Object.keys(this.addForm.controls).forEach(key => {
     const controlErrors: ValidationErrors = this.addForm.get(key).errors;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import {FormGroup, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  allForm: FormGroup;
   title = 'ValidationPage';
   registerActive = false
-  addCardActive = true
-  subscribeActive=false
+  addCardActive = false
+  subscribeActive=true
+  resultsActive=false
+  
+  constructor(private fb: FormBuilder) {}
+  ngOnInit() {
+    this.allForm = this.fb.group({
+      fullName: null
+    })
+  }
   displayRegister(active){
     this.registerActive=active
     this.addCardActive=!active
@@ -20,6 +30,9 @@ export class AppComponent {
   }
   displaySubscribe(active){
     this.subscribeActive=active
-    this.addCardActive=!active
+    this.resultsActive=!active
+  }
+  getForm(name,form){
+    this.allForm.setControl(name,form)
   }
 }

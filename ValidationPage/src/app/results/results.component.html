@@ -1,1 +1,17 @@
-<p>results works!</p>
+<form [formGroup]="allForm">
+    <h2>Results</h2>
+    <h3>User</h3>
+    <p>Username: {{allForm.value.register.username}}</p>
+    <p>Email: {{allForm.value.register.email}}</p>
+    <p>Password: {{allForm.value.register.password}}</p>
+    <h3>Card details</h3>
+    <p>Card Number: {{allForm.value.card.cardList.cardNumber}}</p>
+    <p>Owner: {{allForm.value.card.cardList.owner}}</p>
+    <p>CVV: {{allForm.value.card.cardList.cvv}}</p>
+    <p>Expiration Date: {{allForm.value.card.cardList.expiration}}</p>
+    <h3>Billing Address</h3>
+    <p>City: {{allForm.value.card.city}}</p>
+    <p>Street: {{allForm.value.card.street}}</p>
+    <p>Apartment: {{allForm.value.card.apartment}}</p>
+    <p>Phone Number: {{allForm.value.card.phoneNumber}}</p>
+</form>
