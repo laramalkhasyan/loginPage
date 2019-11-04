@@ -20,6 +20,7 @@ export class AddCardComponent implements OnInit {
   isSubmited= false
   cardList = []
   isValid
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {

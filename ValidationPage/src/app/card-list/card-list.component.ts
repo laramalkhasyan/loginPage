@@ -31,14 +31,12 @@ export class CardListComponent implements OnInit {
       map(value => this.formatCardNumber(value)),
       tap(value => this.cardInput.patchValue(value))
     ).subscribe((val) => {
-      console.log(val, "cardinput")
     })
     this.exDate.valueChanges.pipe(
       distinctUntilChanged(),
       map(value => this.formatExDate(value)),
       tap(value => this.exDate.patchValue(value))
     ).subscribe((val) => {
-      console.log(val, "exDate")
     })
     
   }
